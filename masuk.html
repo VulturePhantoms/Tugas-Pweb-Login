@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="masuk.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body id="body">
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Success
+                </div>
+            </div>
+        </div>
+    </div>
+    <form>
+        <h1>LOGIN</h1>
+        <div class="input">
+            <label for="username">Username</label>
+            <input type="text" id = "username" placeholder="Masukkan Username">
+        </div>
+        <div class="input">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Masukkan Password">
+        </div>
+        <button type="modal">LOGIN</button>
+    </form>
+    <span class="invalid">Invalid Username or Password</span>
+    <script>
+        let form = document.querySelector('button[type="modal"]');
+        let modal =  document.querySelector('.modal');
+        let invalid = document.querySelector('.invalid') 
+        let body = document.getElementById("body");
+
+        form.addEventListener('click', function(e) {
+            e.preventDefault()
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            if (username=="pweb_C" && password=="123123") {
+                modal.classList.add('show');
+                invalid.classList.remove('show');
+                gantibg()
+            } else {
+                invalid.classList.add('show')
+                body.style.backgroundColor='white';
+            }
+        });
+        function gantibg(){
+            body.style.backgroundColor='green';
+        }
+
+        modal.addEventListener('click', function() {
+            this.classList.remove('show');
+        });
+        modal.querySelector('.modal-content').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
